@@ -1,0 +1,13 @@
+/* Tailwind base */
+@import "tailwindcss";
+
+/* DaisyUI plugin */
+@plugin "daisyui" {
+  themes: light, dark;
+}
+
+/* Smooth theme transition */
+html,
+body {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
