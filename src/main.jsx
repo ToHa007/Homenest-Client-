@@ -9,15 +9,11 @@ import AllProperties from "./components/AllProperties/AllProperties.jsx";
 import AddProperties from "./components/AddProperties/AddProperties.jsx";
 import MyProperties from "./components/MyProperties/MyProperties.jsx";
 import MyRatings from "./components/MyRatings/MyRatings.jsx";
-
 import PropertyDetails from "./components/PropertyDetails/PropertyDetails.jsx";
-
-import NotFound from "./components/NotFound/NotFound.jsx"; // 
-
+import NotFound from "./components/NotFound/NotFound.jsx"; 
 import { ThemeProvider } from "./context/ThemeContext.jsx";
 import AuthProvider from "./context/AuthProvider.jsx";
 import PrivateRoute from "./routes/PrivateRoute.jsx";
-
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import UpdateProperties from "./components/UpdateProperties/UpdateProperies.jsx";
 import MyPropertyDetails from "./components/MyPropertyDetails/MyproperetyDetails.jsx";
@@ -33,7 +29,7 @@ const router = createBrowserRouter([
       {
         path: "all-properties",
         Component: AllProperties,
-        loader: () => fetch("http://localhost:3000/all-properties"),
+        loader: () => fetch("https://homenest-server-ruby.vercel.app/all-properties"),
       },
       {
         path: "add-properties",
@@ -66,8 +62,9 @@ const router = createBrowserRouter([
             <UpdateProperties></UpdateProperties>
           </PrivateRoute>
         ),
+        // FIXED: Use 'added-properties' route to fetch single item for update
         loader: ({ params }) =>
-          fetch(`http://localhost:3000/properties/${params.id}`),
+          fetch(`https://homenest-server-ruby.vercel.app/added-properties/${params.id}`),
       },
       {
         path: "property-details/:id",
@@ -77,7 +74,7 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:3000/all-properties/${params.id}`),
+          fetch(`https://homenest-server-ruby.vercel.app/all-properties/${params.id}`),
       },
       {
         path: "my-property-details/:id",
@@ -87,9 +84,8 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:3000/added-properties/${params.id}`),
+          fetch(`https://homenest-server-ruby.vercel.app/added-properties/${params.id}`),
       },
-    
       { path: "*", Component: NotFound },
     ],
   },

@@ -18,7 +18,7 @@ const UpdateProperties = () => {
 
 
   useEffect(() => {
-    fetch(`http://localhost:3000/properties/${id}`)
+    fetch(`https://homenest-server-ruby.vercel.app/properties/${id}`)
       .then((res) => res.json())
       .then((data) => {
         setFormData({
@@ -40,7 +40,7 @@ const UpdateProperties = () => {
 const handleUpdate = (e) => {
   e.preventDefault();
 
-  fetch(`http://localhost:3000/properties/${id}`, {
+  fetch(`https://homenest-server-ruby.vercel.app/properties/${id}`, {
     method: "PATCH",
     headers: {
       "Content-Type": "application/json",

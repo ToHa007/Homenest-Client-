@@ -21,7 +21,7 @@ const AddPropertiesForm = () => {
       name: user.displayName,
     };
 
-    fetch("http://localhost:3000/added-properties", {
+    fetch("https://homenest-server-ruby.vercel.app/added-properties", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -32,8 +32,8 @@ const AddPropertiesForm = () => {
       .then((data) => {
         console.log(data);
 
-        
-        if (data.success) {
+  
+        if (data.insertedId) {
           Swal.fire({
             icon: "success",
             title: "Property Added!",
@@ -42,7 +42,6 @@ const AddPropertiesForm = () => {
             showConfirmButton: false,
           });
 
-          
           form.reset();
         } else {
           Swal.fire({
@@ -127,17 +126,16 @@ const AddPropertiesForm = () => {
               required
             />
 
-            
             <input
               type="email"
-              value={user.email}
+              value={user?.email || ""}
               readOnly
               className="input input-bordered w-full bg-gray-100"
             />
 
             <input
               type="text"
-              value={user.displayName}
+              value={user?.displayName || ""}
               readOnly
               className="input input-bordered w-full bg-gray-100"
             />

@@ -27,7 +27,7 @@ const AllProperties = () => {
       try {
         setLoading(true);
         const response = await fetch(
-          `http://localhost:3000/all-properties${buildQuery()}`
+          `https://homenest-server-ruby.vercel.app/all-properties${buildQuery()}`
         );
         const data = await response.json();
         setProperties(data);

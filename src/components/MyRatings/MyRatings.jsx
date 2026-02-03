@@ -9,7 +9,7 @@ const MyRatings = () => {
   useEffect(() => {
     if (!user?.email) return;
 
-    fetch(`http://localhost:3000/ratings?email=${user.email}`)
+    fetch(`https://homenest-server-ruby.vercel.app/ratings?email=${user.email}`)
       .then((res) => res.json())
       .then((data) => setRatings(data))
       .catch((err) => console.error(err));

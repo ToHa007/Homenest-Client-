@@ -9,7 +9,7 @@ const MyProperties = () => {
 
   useEffect(() => {
     if (user?.email) {
-      fetch(`http://localhost:3000/properties?email=${user.email}`,{
+      fetch(`https://homenest-server-ruby.vercel.app/properties?email=${user.email}`,{
         headers:{
           authorization: `Bearer ${user.accessToken}`
         }
@@ -32,7 +32,7 @@ const MyProperties = () => {
       confirmButtonText: "Yes, delete it!"
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:3000/properties/${_id}`, {
+        fetch(`https://homenest-server-ruby.vercel.app/properties/${_id}`, {
           method: "DELETE"
         })
           .then(res => res.json())

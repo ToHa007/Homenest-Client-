@@ -21,7 +21,7 @@ const PropertyDetails = () => {
   const [review, setReview] = useState("");
   const [ratingsList, setRatingsList] = useState([]); // 
   useEffect(() => {
-    fetch(`http://localhost:3000/ratings/property/${property._id}`)
+    fetch(`https://homenest-server-ruby.vercel.app/ratings/property/${property._id}`)
       .then((res) => res.json())
       .then((data) => setRatingsList(data));
   }, [property._id]);
@@ -29,7 +29,7 @@ const PropertyDetails = () => {
   const handleSubmitRating = async () => {
     if (!rating || !review) return alert("Please give rating & review");
 
-    const res = await fetch("http://localhost:3000/ratings", {
+    const res = await fetch("https://homenest-server-ruby.vercel.app/ratings", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
